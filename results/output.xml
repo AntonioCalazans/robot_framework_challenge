@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.1 on win32)" generated="2025-01-30T10:18:24.328614" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\tests">
+<suite id="s1-s1" name="Api" source="C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\tests\api">
+<suite id="s1-s1-s1" name="Login API" source="C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\tests\api\Login_API.robot">
+<test id="s1-s1-s1-t1" name="Testar Login Pela API" line="8">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-01-30T10:18:25.117270" level="INFO">Creating Session using : alias=Serverest, url=https://serverest.dev, headers=Content-Type=application/json,                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-01-30T10:18:25.117689" level="FAIL">ValueError: not enough values to unpack (expected 2, got 1)</msg>
+<arg>Serverest</arg>
+<arg>${BASE_URL_API}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="FAIL" start="2025-01-30T10:18:25.116290" elapsed="0.019618">ValueError: not enough values to unpack (expected 2, got 1)</status>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<var>${body}</var>
+<arg>email=${VALID_USER_EMAIL}</arg>
+<arg>password=${VALID_USER_PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" start="2025-01-30T10:18:25.136605" elapsed="0.000100"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<var>${response}</var>
+<arg>Serverest</arg>
+<arg>/login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="NOT RUN" start="2025-01-30T10:18:25.136983" elapsed="0.000023"/>
+</kw>
+<kw name="Validate API Response" owner="keywords">
+<arg>${response}</arg>
+<arg>200</arg>
+<arg>authorization</arg>
+<status status="NOT RUN" start="2025-01-30T10:18:25.137266" elapsed="0.000032"/>
+</kw>
+<status status="FAIL" start="2025-01-30T10:18:25.114850" elapsed="0.022679">ValueError: not enough values to unpack (expected 2, got 1)</status>
+</test>
+<status status="FAIL" start="2025-01-30T10:18:24.366013" elapsed="0.773126"/>
+</suite>
+<status status="FAIL" start="2025-01-30T10:18:24.364136" elapsed="0.776383"/>
+</suite>
+<suite id="s1-s2" name="Frontend" source="C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\tests\frontend">
+<suite id="s1-s2-s1" name="Login" source="C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\tests\frontend\Login.robot">
+<test id="s1-s2-s1-t1" name="Testar Cadastro De Usuario" line="7">
+<kw name="Generate Random User Data" owner="keywords">
+<kw name="FakerLibrary.Email">
+<msg time="2025-01-30T10:18:25.154536" level="FAIL">No keyword with name 'FakerLibrary.Email' found.</msg>
+<var>${random_email}</var>
+<status status="FAIL" start="2025-01-30T10:18:25.154431" elapsed="0.000167">No keyword with name 'FakerLibrary.Email' found.</status>
+</kw>
+<kw name="FakerLibrary.Name">
+<var>${random_name}</var>
+<status status="NOT RUN" start="2025-01-30T10:18:25.154798" elapsed="0.000026"/>
+</kw>
+<kw name="'RETURN'">
+<arg>${random_name}</arg>
+<arg>${random_email}</arg>
+<status status="NOT RUN" start="2025-01-30T10:18:25.154906" elapsed="0.000021"/>
+</kw>
+<var>${random_name}</var>
+<var>${random_email}</var>
+<status status="FAIL" start="2025-01-30T10:18:25.152773" elapsed="0.002275">No keyword with name 'FakerLibrary.Email' found.</status>
+</kw>
+<kw name="Perform User Registration" owner="keywords">
+<arg>${random_name}</arg>
+<arg>${random_email}</arg>
+<arg>senha123</arg>
+<status status="NOT RUN" start="2025-01-30T10:18:25.155349" elapsed="0.000036"/>
+</kw>
+<status status="FAIL" start="2025-01-30T10:18:25.152056" elapsed="0.003554">No keyword with name 'FakerLibrary.Email' found.</status>
+</test>
+<test id="s1-s2-s1-t2" name="Testar Login Com Usuario Valido" line="11">
+<kw name="Perform Login" owner="keywords">
+<kw name="Open Login Page" owner="login_page">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-30T10:18:25.157658" level="INFO">Opening browser 'chrome' to base url 'https://front.serverest.dev/'.</msg>
+<arg>${BASE_URL_FRONTEND}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-30T10:18:25.157478" elapsed="4.533202"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-30T10:18:29.691073" elapsed="0.050337"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${EMAIL_INPUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-30T10:18:29.741663" elapsed="0.038920"/>
+</kw>
+<status status="PASS" start="2025-01-30T10:18:25.157292" elapsed="4.623533"/>
+</kw>
+<kw name="Input Login Credentials" owner="login_page">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-30T10:18:29.782207" level="INFO">Typing text 'valid_user@email.com' into text field 'id=email'.</msg>
+<arg>${EMAIL_INPUT}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-30T10:18:29.781775" elapsed="0.277342"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-30T10:18:30.059574" level="INFO">Typing text '123' into text field 'id=password'.</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-30T10:18:30.059347" elapsed="0.102853"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-01-30T10:18:29.781126" elapsed="0.381185"/>
+</kw>
+<kw name="Submit Login" owner="login_page">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-30T10:18:30.162842" level="INFO">Clicking button 'xpath=//button[contains(text(), 'Entrar')]'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-30T10:18:30.162688" elapsed="0.098650"/>
+</kw>
+<status status="PASS" start="2025-01-30T10:18:30.162468" elapsed="0.099002"/>
+</kw>
+<arg>${VALID_USER_EMAIL}</arg>
+<arg>${VALID_USER_PASSWORD}</arg>
+<status status="PASS" start="2025-01-30T10:18:25.156955" elapsed="5.104572"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-01-30T10:18:35.701044" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-01-30T10:18:35.701342" level="FAIL">Element 'xpath=//h1[contains(text(), 'Bem Vindo')]' not visible after 5 seconds.</msg>
+<arg>${DASHBOARD}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-01-30T10:18:30.261903" elapsed="5.444423">Element 'xpath=//h1[contains(text(), 'Bem Vindo')]' not visible after 5 seconds.</status>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2025-01-30T10:18:35.706832" elapsed="0.000071"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-01-30T10:18:35.707254" elapsed="0.000053"/>
+</kw>
+<status status="FAIL" start="2025-01-30T10:18:25.156430" elapsed="10.551296">Element 'xpath=//h1[contains(text(), 'Bem Vindo')]' not visible after 5 seconds.</status>
+</test>
+<status status="FAIL" start="2025-01-30T10:18:25.143439" elapsed="10.565750"/>
+</suite>
+<status status="FAIL" start="2025-01-30T10:18:25.141467" elapsed="10.569702"/>
+</suite>
+<status status="FAIL" start="2025-01-30T10:18:24.330204" elapsed="11.382496"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="0" fail="3" skip="0">Tests</stat>
+<stat name="Api" id="s1-s1" pass="0" fail="1" skip="0">Tests.Api</stat>
+<stat name="Login API" id="s1-s1-s1" pass="0" fail="1" skip="0">Tests.Api.Login API</stat>
+<stat name="Frontend" id="s1-s2" pass="0" fail="2" skip="0">Tests.Frontend</stat>
+<stat name="Login" id="s1-s2-s1" pass="0" fail="2" skip="0">Tests.Frontend.Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-01-30T10:18:25.109845" level="ERROR">Error in file 'C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\resources\keywords.robot' on line 3: Importing library 'FakerLibrary locale=pt_BR' failed: ModuleNotFoundError: No module named 'FakerLibrary locale=pt_BR'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+<msg time="2025-01-30T10:18:25.113231" level="WARN">Imported resource file 'C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\resources\pages\register_page.robot' is empty.</msg>
+<msg time="2025-01-30T10:18:25.147985" level="ERROR">Error in file 'C:\Users\Anton\OneDrive\Área de Trabalho\Robot\robot_framework_challenge\resources\keywords.robot' on line 3: Importing library 'FakerLibrary locale=pt_BR' failed: ModuleNotFoundError: No module named 'FakerLibrary locale=pt_BR'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Scripts\robot.exe
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313
+  C:\Users\Anton\AppData\Local\Programs\Python\Python313\Lib\site-packages</msg>
+</errors>
+</robot>
